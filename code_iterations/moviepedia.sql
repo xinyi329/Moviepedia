@@ -12,7 +12,7 @@ use xl2700;
 
 drop table if exists movie;
 
-create external table movie (movie_id string, movie_imdb_link string, movie_title string, release_year int, color string, duration int, genres string, plot_keywords string, language string, country string, content_rating string, movie_facebook_likes int, num_user_for_reviews int, num_critic_for_reviews int, num_voted_users int, imdb_score float, production_budget int, worldwide_gross int, domestic_gross int, cast_total_facebook_likes int, actor_1_name string, actor_1_id string, actor_1_facebook_likes int, actor_2_name string, actor_2_id string, actor_2_facebook_likes int, actor_3_name string, actor_3_id string, actor_3_facebook_likes int, director_name string, director_id string, director_facebook_likes int)
+create external table movie (movie_id string, movie_imdb_link string, movie_title string, release_year int, color string, duration int, genres string, plot_keywords string, language string, country string, content_rating string, movie_facebook_likes int, num_user_for_reviews int, num_critic_for_reviews int, num_voted_users int, imdb_score float, production_budget int, worldwide_gross bigint, domestic_gross bigint, cast_total_facebook_likes int, actor_1_name string, actor_1_id string, actor_1_facebook_likes int, actor_2_name string, actor_2_id string, actor_2_facebook_likes int, actor_3_name string, actor_3_id string, actor_3_facebook_likes int, director_name string, director_id string, director_facebook_likes int)
 row format delimited fields terminated by '\t'
 location '/user/xl2700/class9/output4/';
 
