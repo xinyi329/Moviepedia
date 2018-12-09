@@ -45,13 +45,16 @@ and then put them to HDFS by
 hdfs dfs -put *.json class9
 ```
 
-You may access the file through `/home/xl2700/class9/` from local file system or `/user/xl2700/class9/` from HDFS on Dumbo.
+You may access the files through `/home/xl2700/class9/` from local file system or `/user/xl2700/class9/` from HDFS on Dumbo.
 
 ### IMDb Reviews Dataset (`/data_ingest/imdb_review`)
 
 ### Twitter Reviews Dataset (`/data_ingest/twitter_review`)
-This Twitter Reviews Dataset has tweets sharing reviews of movies listed in IMDb 5000 Dataset.  
-We run the code file `ReadTweet.java` on local machine with an imput file `movie_info`, which has all the movie information from IMDb 5000 Dataset, and then output all tweets into `project_data.txt`.  
+
+This Twitter Reviews Dataset has tweets sharing reviews of movies listed in IMDb 5000 Dataset. 
+
+We run the code file `ReadTweet.java` on local machine with an imput file `movie_info`, which has all the movie information from IMDb 5000 Dataset, and then output all tweets into `project_data.txt`.
+
 We move it to Dumbo by
 ```
 scp project_data.txt dumbo:
@@ -61,7 +64,8 @@ and then put it into HDFS by
 hdfs dfs -put project_data.txt /user/yl6183/project
 ```
 
-You may access the input file `moive_info` through `/home/yl6183/movie_info` from local file system, or `/user/yl6183/project/movie_info` from HDFS on Dumbo.  
+You may access the input file `moive_info` through `/home/yl6183/movie_info` from local file system, or `/user/yl6183/project/movie_info` from HDFS on Dumbo.
+
 You may access the output file `project_data.txt` through `/home/yl6183/project_data.txt` from local file system, or `/user/yl6183/project/project_data.txt` from HDFS on Dumbo.
 
 ## Data Profiling (`/profiling_code`)
@@ -94,7 +98,9 @@ hadoop jar /opt/cloudera/parcels/CDH-5.11.1-1.cdh5.11.1.p0.4/lib/hadoop-mapreduc
 ### IMDb Reviews Dataset (`/profiling_code/imdb_review`)
 
 ### Twitter Reviews Dataset (`/profiling_code/twitter_review`)
-One MapReduce job is used to test the length of each tweet and the percentage of english characters inside each tweet.   
+
+One MapReduce job is used to test the length of each tweet and the percentage of English characters inside each tweet.
+
 The command to launch the job is
 ```
 hadoop jar dataProfile.jar DataProfile /user/yl6183/project/project_data.txt /user/yl6183/project/profileOutput
@@ -132,6 +138,7 @@ hadoop jar /opt/cloudera/parcels/CDH-5.11.1-1.cdh5.11.1.p0.4/lib/hadoop-mapreduc
 The stop words to remove come from https://sites.google.com/site/kevinbouge/stopwords-lists, and we use `stopwords_en.txt` here.
 
 ### Twitter Reviews Dataset (`/etl_code/twitter_review`)
+
 There are two MapReduce jobs
 
 * `DataClean.java`
@@ -149,9 +156,13 @@ hadoop jar dataClean.jar DataClean /user/yl6183/project/project_data.txt /user/y
 ```
 hadoop jar /opt/cloudera/parcels/CDH-5.11.1-1.cdh5.11.1.p0.4/lib/hadoop-mapreduce/hadoop-streaming.jar -D mapreduce.job.reduces=1 -files hdfs://dumbo/user/yl6183/project/python_code/SentiCountMap/py,hdfs://dumbo/user/yl6183/project/python_code/SentiCountReduce.py -cacheFile hdfs://dumbo/user/yl6183/project/stopwords_en.txt#english -cacheFile hdfs://dumbo/user/yl6183/project/SentiWords.txt#SentiWords.txt -mapper "python SentiCountMap.py" -reducer "python SentiCountReduce.py" -input /user/yl6183/project/cleanOutput/part-r-00000 -output /user/yl6183/project/SentiOutput
 ```
-The `movie_info` file used in the first MapReduce job is the same as in data_ingest part. It is used to assign keys to tweets.  
-The stop words to remove come from https://sites.google.com/site/kevinbouge/stopwords-lists, and we use `stopwords_en.txt` here.  
-The dictionary for sentiment analysis come form https://hlt-nlp.fbk.eu/technologies/sentiwords, and we use `SentiWords.txt` here.  
+
+The `movie_info` file used in the first MapReduce job is the same as in data_ingest part. It is used to assign keys to tweets.
+
+The stop words to remove come from https://sites.google.com/site/kevinbouge/stopwords-lists, and we use `stopwords_en.txt` in this project.
+
+The dictionary for sentiment analysis come form https://hlt-nlp.fbk.eu/technologies/sentiwords, and we use `SentiWords.txt` in this project.
+
 You may access `stopwords_en.txt` and `SentiWords.txt` through `/home/yl6183/stopwords_en.txt`, `/home/yl6183/SentiWords.txt` from local file system, or `/user/yl6183/project/stopwords_en.txt`, `/user/yl6183/SentiWords.txt` from HDFS on Dumbo.  
 
 ## Analytic Code (`/code_iterations`)
@@ -167,7 +178,7 @@ The external tables are stored at
 * `genres`: `/user/xl2700/class9/output5/`
 * `actor`: `/user/xl2700/class9/output6/`
 * `imdb_review`: `/user/xl2700/moviepedia/imdb/` (copied from `/path`)
-* `twitter_review`: `/user/xl2700/moviepedia/twitter/` (copied from `/user/yl6183/project/SentiOutput/part-00000`)
+* `twitter_review`: `/user/xl2700/moviepedia/twitter/` (copied from `/user/yl6183/project/SentiOutput/`)
 
 We mainly study
 * the trend of the development in movie industry
