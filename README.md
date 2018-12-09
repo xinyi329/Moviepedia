@@ -77,7 +77,7 @@ We run the code file `ReadTweet.java` on local machine with an imput file `movie
 
 We move it to Dumbo by
 ```
-scp project_data.txt yl6183@dumbo.es.its.nyu.edu:~
+scp project_data.txt dumbo:~
 ```
 and then put it into HDFS by
 ```
@@ -169,7 +169,7 @@ The stop words to remove come from https://sites.google.com/site/kevinbouge/stop
 
 There is one MapReduce job
 
-* `Clean.java`,`CleanMapper.java`,`CleanReducer.java`
+* `Clean.java`, `CleanMapper.java`, `CleanReducer.java`
 
 to 
 
