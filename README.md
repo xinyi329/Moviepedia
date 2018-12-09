@@ -57,7 +57,7 @@ We run the code file `ReadTweet.java` on local machine with an imput file `movie
 
 We move it to Dumbo by
 ```
-scp project_data.txt dumbo:
+scp project_data.txt yl6183@dumbo.es.its.nyu.edu:~
 ```
 and then put it into HDFS by
 ```
