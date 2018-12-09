@@ -48,6 +48,26 @@ hdfs dfs -put *.json class9
 You may access the files through `/home/xl2700/class9/` from local file system or `/user/xl2700/class9/` from HDFS on Dumbo.
 
 ### IMDb Reviews Dataset (`/data_ingest/imdb_review`)
+IMDb Reviews Dataset is scraped from IMDb websites by using a spider based on Scrapy Framework according to the list given by IMDb 5000.
+The spider is in folder `data_ingest/imdb_review`. We can run this spider in the Python 3.7 environment with module scrapy installed. The spider will read the text file  `movie_metadata.csv` and return the result to a file called `reviews.txt`.
+
+So the processure would be
+```
+scrapy crawl movieSpider
+```
+
+Then we will get the file `reviews.txt` and move it onto Dumbo
+
+We move it to Dumbo by
+```
+scp reviews.txt dumbo:fp/clean
+```
+and then put it into HDFS by
+```
+mv reviews.txt raw.txt
+hdfs dfs -put raw.txt /user/xl2783/clean/raw.txt
+```
+You may access the output file `raw.txt` through `/home/fp/clean/raw.txt` from local file system, or `/user/xl2783/clean/raw.txt` from HDFS on Dumbo.
 
 ### Twitter Reviews Dataset (`/data_ingest/twitter_review`)
 
@@ -96,6 +116,15 @@ hadoop jar /opt/cloudera/parcels/CDH-5.11.1-1.cdh5.11.1.p0.4/lib/hadoop-mapreduc
 ```
 
 ### IMDb Reviews Dataset (`/profiling_code/imdb_review`)
+There is two tasks in one mapreduce job.
+
+One is to find the score value range of all the reviews.
+The other is to find the number of spoiler reviews in reviews.
+
+The command to launch the job is
+```
+hadoop jar profile.jar Profile /user/xl2783/profile/raw.txt /user/xl2783/clean/output
+```
 
 ### Twitter Reviews Dataset (`/profiling_code/twitter_review`)
 
@@ -136,6 +165,26 @@ hadoop jar /opt/cloudera/parcels/CDH-5.11.1-1.cdh5.11.1.p0.4/lib/hadoop-mapreduc
 ### IMDb Reviews Dataset (`/etl_code/imdb_review`)
 
 The stop words to remove come from https://sites.google.com/site/kevinbouge/stopwords-lists, and we use `stopwords_en.txt` here.
+
+There is one big MapReduce job
+
+* `Clean.java`,`CleanMapper.java`,`CleanReducer.java`
+
+to 
+
+
+* Remove the reviews that have no score made on the movie.
+* Remove the stop words that is meaningless to the final sentimental analysis by caching the stop words file into the mapreduce job.
+* Remove non-english words, uselinks and other characters in the reviews.
+* Addup the scores of the same word in the same movie with word counted.
+
+The command to launch them are
+```
+hadoop jar clean.jar Clean /user/xl2783/clean/raw.txt /user/xl2783/clean/output
+```
+
+You may access `stopwords_en.txt` through `/home/xl2783/fp/clean/stopwords_en.txt`from local file system, or `/user/xl2783/clean/stopwords_en.txt` from HDFS on Dumbo.  
+
 
 ### Twitter Reviews Dataset (`/etl_code/twitter_review`)
 
