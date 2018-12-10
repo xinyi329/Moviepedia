@@ -170,8 +170,6 @@ hadoop jar /opt/cloudera/parcels/CDH-5.11.1-1.cdh5.11.1.p0.4/lib/hadoop-mapreduc
 
 ### IMDb Reviews Dataset (`/etl_code/imdb_review`)
 
-The stop words to remove come from https://sites.google.com/site/kevinbouge/stopwords-lists, and we use `stopwords_en.txt` here.
-
 There is one MapReduce job
 
 * `Clean.java`, `CleanMapper.java`, `CleanReducer.java`
@@ -187,6 +185,8 @@ The command to launch the job is
 ```
 hadoop jar clean.jar Clean /user/xl2783/clean/raw.txt /user/xl2783/clean/output
 ```
+
+The stop words to remove come from https://sites.google.com/site/kevinbouge/stopwords-lists, and we use `stopwords_en.txt` here.
 
 You may access `stopwords_en.txt` through `/home/xl2783/fp/clean/stopwords_en.txt` from local file system, or `/user/xl2783/clean/stopwords_en.txt` from HDFS on Dumbo.
 
