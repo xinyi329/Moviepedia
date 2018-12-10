@@ -73,7 +73,7 @@ You may access the output file `raw.txt` through `/home/fp/clean/raw.txt` from l
 
 This Twitter Reviews Dataset has tweets sharing reviews of movies listed in IMDb 5000 Dataset. 
 
-We run the code file `ReadTweet.java` on local machine with an imput file `movie_info`, which has all the movie information from IMDb 5000 Dataset, and then output all tweets into `project_data.txt`.
+We run `ReadTweet.java` on local machine with an input file `movie_info`, which has all the movie information from IMDb 5000 Dataset, and then output all tweets into `project_data.txt`.
 
 We move it to Dumbo by
 ```
@@ -115,6 +115,8 @@ hadoop jar /opt/cloudera/parcels/CDH-5.11.1-1.cdh5.11.1.p0.4/lib/hadoop-mapreduc
 hadoop jar /opt/cloudera/parcels/CDH-5.11.1-1.cdh5.11.1.p0.4/lib/hadoop-mapreduce/hadoop-streaming.jar -D mapreduce.job.reduces=1 -files ./map3.py,./reduce3.py -mapper "python map3.py" -reducer "python reduce3.py" -input /user/xl2700/class9/imdb_output_2017.json,/user/xl2700/class9/output2 -output /user/xl2700/class9/output3
 ```
 
+In `map4.py`, we refer to the author of the dataset, Chuan Sun (https://github.com/sundeepblue/movie_rating_prediction), for functions `parse_facebook_likes_number`, `parse_duration` and `parse_aspect_ratio`.
+
 ### IMDb Reviews Dataset (`/profiling_code/imdb_review`)
 
 There are two tasks in one MapReduce job:
@@ -129,7 +131,10 @@ hadoop jar profile.jar Profile /user/xl2783/profile/raw.txt /user/xl2783/clean/o
 
 ### Twitter Reviews Dataset (`/profiling_code/twitter_review`)
 
-One MapReduce job is used to test the length of each tweet and the percentage of English characters inside each tweet.
+One MapReduce job is used to 
+
+* get the length of each tweet
+* get the percentage of English characters inside each tweet
 
 The command to launch the job is
 ```
@@ -173,10 +178,10 @@ There is one MapReduce job
 
 to 
 
-* remove the reviews that have no score made on the movie.
-* remove the stop words that is meaningless to the final sentimental analysis by caching the stop words file into the mapreduce job.
-* remove non-English words, user links and other characters in the reviews.
-* add up the scores of the same word in the same movie with word counted.
+* remove the reviews that have no score made on the movie
+* remove the stop words that is meaningless to the final sentimental analysis by caching the stop words file into the MapReduce job
+* remove non-English words, user links and other characters in the reviews
+* add up the scores of the same word in the same movie with word counted
 
 The command to launch the job is
 ```
@@ -194,8 +199,8 @@ There are two MapReduce jobs
 
 to
 
-* remove non-english words, useless links and `@` from the Twitter Reveiws Dataset, and assign each tweet with a movie key
-* remove stop words, conduct sentiment analysis and count the number of times a word appears in a movie review, grouped by movie keys.
+* remove non-English words, useless links and `@` from the Twitter Reviews Dataset, and assign each tweet with a movie key
+* remove stop words, conduct sentiment analysis and count the number of times a word appears in a movie review, grouped by movie keys
 
 The command to launch them are
 ```
@@ -205,13 +210,13 @@ hadoop jar dataClean.jar DataClean /user/yl6183/project/project_data.txt /user/y
 hadoop jar /opt/cloudera/parcels/CDH-5.11.1-1.cdh5.11.1.p0.4/lib/hadoop-mapreduce/hadoop-streaming.jar -D mapreduce.job.reduces=1 -files hdfs://dumbo/user/yl6183/project/python_code/SentiCountMap/py,hdfs://dumbo/user/yl6183/project/python_code/SentiCountReduce.py -cacheFile hdfs://dumbo/user/yl6183/project/stopwords_en.txt#english -cacheFile hdfs://dumbo/user/yl6183/project/SentiWords.txt#SentiWords.txt -mapper "python SentiCountMap.py" -reducer "python SentiCountReduce.py" -input /user/yl6183/project/cleanOutput/part-r-00000 -output /user/yl6183/project/SentiOutput
 ```
 
-The `movie_info` file used in the first MapReduce job is the same as in data_ingest/twitter_review part. It is used to assign keys to tweets.
+The `movie_info` file used in the first MapReduce job is the same as in **data_ingest/twitter_review** part. It is used to assign keys to tweets.
 
 The stop words to remove come from https://sites.google.com/site/kevinbouge/stopwords-lists, and we use `stopwords_en.txt` in this project.  
 
-The function in DataClean.java related to reading cache file is cited from https://www.cloudera.com/documentation/other/tutorial/CDH5/topics/ht_wordcount3.html, with some modifications to fit the situation for twitter reviews.
+The function in `DataClean.java` related to reading cache file is originated from https://www.cloudera.com/documentation/other/tutorial/CDH5/topics/ht_wordcount3.html, with some modifications to fit the situation for Twitter reviews.
 
-The dictionary for sentiment analysis come form https://hlt-nlp.fbk.eu/technologies/sentiwords, and we use `SentiWords.txt` in this project.
+The dictionary for sentiment analysis comes form https://hlt-nlp.fbk.eu/technologies/sentiwords, and we use `SentiWords.txt` in this project.
 
 You may access `stopwords_en.txt` and `SentiWords.txt` through `/home/yl6183/stopwords_en.txt`, `/home/yl6183/SentiWords.txt` from local file system, or `/user/yl6183/project/stopwords_en.txt`, `/user/yl6183/SentiWords.txt` from HDFS on Dumbo.  
 
