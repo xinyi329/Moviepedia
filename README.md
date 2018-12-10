@@ -205,9 +205,11 @@ hadoop jar dataClean.jar DataClean /user/yl6183/project/project_data.txt /user/y
 hadoop jar /opt/cloudera/parcels/CDH-5.11.1-1.cdh5.11.1.p0.4/lib/hadoop-mapreduce/hadoop-streaming.jar -D mapreduce.job.reduces=1 -files hdfs://dumbo/user/yl6183/project/python_code/SentiCountMap/py,hdfs://dumbo/user/yl6183/project/python_code/SentiCountReduce.py -cacheFile hdfs://dumbo/user/yl6183/project/stopwords_en.txt#english -cacheFile hdfs://dumbo/user/yl6183/project/SentiWords.txt#SentiWords.txt -mapper "python SentiCountMap.py" -reducer "python SentiCountReduce.py" -input /user/yl6183/project/cleanOutput/part-r-00000 -output /user/yl6183/project/SentiOutput
 ```
 
-The `movie_info` file used in the first MapReduce job is the same as in data_ingest part. It is used to assign keys to tweets.
+The `movie_info` file used in the first MapReduce job is the same as in data_ingest/twitter_review part. It is used to assign keys to tweets.
 
-The stop words to remove come from https://sites.google.com/site/kevinbouge/stopwords-lists, and we use `stopwords_en.txt` in this project.
+The stop words to remove come from https://sites.google.com/site/kevinbouge/stopwords-lists, and we use `stopwords_en.txt` in this project.  
+
+The function in DataClean.java related to reading cache file is cited from https://www.cloudera.com/documentation/other/tutorial/CDH5/topics/ht_wordcount3.html, with some modifications to fit the situation for twitter reviews.
 
 The dictionary for sentiment analysis come form https://hlt-nlp.fbk.eu/technologies/sentiwords, and we use `SentiWords.txt` in this project.
 
