@@ -115,7 +115,7 @@ hadoop jar /opt/cloudera/parcels/CDH-5.11.1-1.cdh5.11.1.p0.4/lib/hadoop-mapreduc
 hadoop jar /opt/cloudera/parcels/CDH-5.11.1-1.cdh5.11.1.p0.4/lib/hadoop-mapreduce/hadoop-streaming.jar -D mapreduce.job.reduces=1 -files ./map3.py,./reduce3.py -mapper "python map3.py" -reducer "python reduce3.py" -input /user/xl2700/class9/imdb_output_2017.json,/user/xl2700/class9/output2 -output /user/xl2700/class9/output3
 ```
 
-In `map4.py`, we refer to the author of the dataset, Chuan Sun (https://github.com/sundeepblue/movie_rating_prediction), for functions `parse_facebook_likes_number`, `parse_duration` and `parse_aspect_ratio`.
+In `map3.py`, we refer to the author of the dataset, Chuan Sun (https://github.com/sundeepblue/movie_rating_prediction), for functions `parse_facebook_likes_number`, `parse_duration` and `parse_aspect_ratio`.
 
 ### IMDb Reviews Dataset (`/profiling_code/imdb_review`)
 

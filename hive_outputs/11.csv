@@ -1,0 +1,27 @@
+genre,movie_id,movie_title,release_year,num_voted_users
+Action,tt0468569,The Dark Knight,2008,1980974
+Adventure,tt1375666,Inception,2010,1760982
+Animation,tt0910970,WALL·E,2008,869513
+Biography,tt0108052,Schindler's List,1993,1038698
+Comedy,tt0109830,Forrest Gump,1994,1532783
+Crime,tt0111161,The Shawshank Redemption,1994,2012309
+Documentary,tt0310793,Bowling for Columbine,2002,132743
+Drama,tt0111161,The Shawshank Redemption,1994,2012309
+Family,tt0910970,WALL·E,2008,869513
+Fantasy,tt0120737,The Lord of the Rings: The Fellowship of the Ring,2001,1449146
+Film-noir,tt0032976,Rebecca,1940,106991
+Game-show,tt0313038,The Bachelor,NULL,5255
+History,tt0108052,Schindler's List,1993,1038698
+Horror,tt0102926,The Silence of the Lambs,1991,1079553
+Music,tt2582802,Whiplash,2014,577293
+Musical,tt2294629,Frozen,2013,496222
+Mystery,tt0114369,Se7en,1995,1229950
+News,tt1232207,Capitalism: A Love Story,2009,39047
+Reality-tv,tt0313038,The Bachelor,NULL,5255
+Romance,tt0172495,Gladiator,2000,1163052
+Sci-fi,tt1375666,Inception,2010,1760982
+Short,tt2164708,Vessel,2012,330
+Sport,tt0405159,Million Dollar Baby,2004,568625
+Thriller,tt0468569,The Dark Knight,2008,1980974
+War,tt0361748,Inglourious Basterds,2009,1072499
+Western,tt1853728,Django Unchained,2012,1160157

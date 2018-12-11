@@ -1,0 +1,27 @@
+genre,movie_id,movie_title,release_year,num_critic_for_reviews
+Action,tt1345836,The Dark Knight Rises,2012,828
+Adventure,tt1446714,Prometheus,2012,805
+Animation,tt2096673,Inside Out,2015,571
+Biography,tt1024648,Argo,2012,653
+Comedy,tt1386697,Suicide Squad,2016,665
+Crime,tt0780504,Drive,2011,694
+Documentary,tt0361596,Fahrenheit 9/11,2004,281
+Drama,tt1853728,Django Unchained,2012,810
+Family,tt0970179,Hugo,2011,690
+Fantasy,tt0770828,Man of Steel,2013,741
+Film-noir,tt0032976,Rebecca,1940,175
+Game-show,tt0313038,The Bachelor,NULL,5
+History,tt1024648,Argo,2012,653
+Horror,tt0816711,World War Z,2013,658
+Music,tt2582802,Whiplash,2014,561
+Musical,tt1707386,Les Misérables,2012,493
+Mystery,tt1446714,Prometheus,2012,805
+News,tt1232207,Capitalism: A Love Story,2009,216
+Reality-tv,tt0313038,The Bachelor,NULL,5
+Romance,tt1431045,Deadpool,2016,641
+Sci-fi,tt1446714,Prometheus,2012,805
+Short,tt0996382,Dolphins and Whales 3D: Tribes of the Ocean,2008,9
+Sport,tt3076658,Creed,2015,469
+Thriller,tt1345836,The Dark Knight Rises,2012,828
+War,tt0443272,Lincoln,2012,547
+Western,tt1853728,Django Unchained,2012,810

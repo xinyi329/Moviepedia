@@ -1,0 +1,27 @@
+genre,movie_id,movie_title,release_year,worldwide_gross
+Action,tt0499549,Avatar,2009,2776345279
+Adventure,tt0499549,Avatar,2009,2776345279
+Animation,tt2294629,Frozen,2013,1272469910
+Biography,tt2179136,American Sniper,2014,547326372
+Comedy,tt2294629,Frozen,2013,1272469910
+Crime,tt2820852,Furious 7,2015,1518722794
+Documentary,tt1477715,This Is It,2009,252091016
+Drama,tt0120338,Titanic,1997,2208208395
+Family,tt2294629,Frozen,2013,1272469910
+Fantasy,tt0499549,Avatar,2009,2776345279
+Film-noir,tt0037884,The Lost Weekend,1945,11000000
+Game-show,tt0313038,The Bachelor,NULL,36882378
+History,tt2179136,American Sniper,2014,547326372
+Horror,tt0480249,I Am Legend,2007,585532684
+Music,tt1231580,Alvin and the Chipmunks: The Squeakquel,2009,443483213
+Musical,tt2294629,Frozen,2013,1272469910
+Mystery,tt0373889,Harry Potter and the Order of the Phoenix,2007,942943935
+News,tt1232207,Capitalism: A Love Story,2009,19121531
+Reality-tv,tt0313038,The Bachelor,NULL,36882378
+Romance,tt0120338,Titanic,1997,2208208395
+Sci-fi,tt0499549,Avatar,2009,2776345279
+Short,tt0996382,Dolphins and Whales 3D: Tribes of the Ocean,2008,17252287
+Sport,tt1216475,Cars 2,2011,560155383
+Thriller,tt0369610,Jurassic World,2015,1648893208
+War,tt2179136,American Sniper,2014,547326372
+Western,tt1663202,The Revenant,2015,532950503
