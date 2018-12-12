@@ -244,7 +244,7 @@ We mainly study
 * top directors and actors/actresses within each genre to consider when forming a film crew (stored in `top_directors` and `top_actors`)
 * top commonly mentioned words from reviews on IMDb and Twitter by genre (stored in `imdb_top_words` and `twitter_top_words`)
 
-Unless other specified (stored in table), the results are directly read from the console.
+We dump the table to .csv files from Hive to local file system by running the commands in `/code_iterations/dump_tables.sh`. You may access these files at `/home/xl2700/moviepedia/hive/` on Dumbo, while we also copy to the folder `/hive_outputs`.
 
 ## Screenshots (`/screenshots`)
 

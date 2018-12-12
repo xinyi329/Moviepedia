@@ -56,6 +56,13 @@ where release_year is not null and worldwide_gross <> 0
 group by release_year
 order by release_year asc;
 
+-- 3a / outliers
+
+select movie_title, release_year, movie_id, worldwide_gross
+from movie
+where release_year = 1937 or release_year = 1939 or release_year = 1942
+order by release_year asc;
+
 /* Correlation */
 
 -- 4 / correlation

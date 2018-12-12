@@ -6,6 +6,8 @@ beeline -u jdbc:hive2://babar.es.its.nyu.edu:10000/xl2700 -n xl2700 -w /home/xl2
 
 beeline -u jdbc:hive2://babar.es.its.nyu.edu:10000/xl2700 -n xl2700 -w /home/xl2700/password --outputformat=csv2 -e 'select release_year, avg(worldwide_gross) as average_gross from movie where release_year is not null and worldwide_gross <> 0 group by release_year order by release_year asc' > 3.csv
 
+beeline -u jdbc:hive2://babar.es.its.nyu.edu:10000/xl2700 -n xl2700 -w /home/xl2700/password --outputformat=csv2 -e 'select movie_title, release_year, movie_id, worldwide_gross from movie where release_year = 1937 or release_year = 1939 or release_year = 1942 order by release_year asc' > 3a.csv
+
 beeline -u jdbc:hive2://babar.es.its.nyu.edu:10000/xl2700 -n xl2700 -w /home/xl2700/password --outputformat=csv2 -e 'select * from correlation' > 4.csv
 
 beeline -u jdbc:hive2://babar.es.its.nyu.edu:10000/xl2700 -n xl2700 -w /home/xl2700/password --outputformat=csv2 -e 'select distinct movie_id, movie_title, release_year, worldwide_gross from movie order by worldwide_gross desc limit 10' > 5.csv
