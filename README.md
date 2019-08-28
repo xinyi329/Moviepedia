@@ -1,10 +1,12 @@
 # Moviepedia
 
-This is the course project of Realtime and Big Data Analytics @ NYU done by
+This is the independent study done by
 
 * Xinyi Liu (`xl2700`)
 * Xinsen Lu (`xl2783`)
 * Yiming Li (`yl6183`)
+
+with the supervision of Prof. Suzanne McIntosh.
 
 ## Data Ingest (`/data_ingest`)
 
